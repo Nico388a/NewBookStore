@@ -16,14 +16,35 @@
 </head>
 
 <body>
-  <h1>Hello</h1>
+  <h1>Nicolai's Book Store</h1>
   <div id="app">
     <input v-model="name" placeholder="Name">
-    <button v-on:click="sayHello()" class="btn btn-primary">Say hello</button>
-    <div>{{ greeting }}</div>
+    <button v-on:click="GetAll" class="btn btn-primary">Get All</button>
+
+    <ul v-if="books.length">
+      <li v-for="book in books">
+        {{book.id}} {{book.title}} {{book.author}} {{book.publisher}} {{book.price}}
+
+      </li>
+    </ul>
+    <div v-else>No books</div>
+
+    <br>
+
+    <h2 style="font-family: fantasy;">Get By ID</h2>
+    <input v-model="toGetById" placeholder="id" type="number">
+    <button v-on:click="getById(toGetById)" class="btn btn-primary">Get One</button>
+    <div v-if= "singleBook">
+    {{singleBook.id}} {{singleBook.title}} {{singleBook.author}} {{singleBook.publisher}} {{singleBook.price}}
+  </div>
+  <div v-else>No book</div>
+
   </div>
 
   <script src="bundle.js"></script>
+
+  <h2>Add book</h2>
+  <input v-model =""
 </body>
 
 </html>
