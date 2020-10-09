@@ -24,10 +24,19 @@ new Vue({
 
         name: "",
         greeting: "",
+
         titleToGetBy: "",
         toGetById: -1,
         singleBook: null,
-        deletedId: 0,
+
+        addData: { title: "", author: "", publisher: "", price: 0 },
+        addMessage: "",
+
+        deleteId: 0,
+        deleteMessage: "",
+
+        updateData: { id: 0, title: "", author: "", publisher: "", price: 0 },
+        updateMessage: ""
 
 
     },
@@ -61,6 +70,52 @@ new Vue({
                 }
                 )
         },
+
+        //response message viser status på http fx. om den er 200 ok eller over 400 ikke ok
+
+        addBook() {
+            axios.post<number>(baseUrl, this.addData)
+                .then((response: AxiosResponse) => {
+                    let message: string = "response" + response.status + " " + response.statusText
+                    this.addMessage = message
+                    this.GetAll()
+                })
+                .catch((error: AxiosError) => {
+                    alert(error.message)
+                }
+                )
+        },
+
+
+        updateBook() {
+            let url: string = baseUrl + "/" + this.updateData.id
+
+            axios.put<number>(url, this.updateData)
+                .then((response: AxiosResponse) => {
+
+                    let message: string = "response" + response.status + " " + response.statusText
+                    this.updateMessage = message
+                    this.GetAll()
+                })
+                .catch((error: AxiosError) => {
+                    alert(error.message)
+                })
+        },
+
+        deleteBook(deleteId: number) {
+            let url: string = baseUrl + "/" + deleteId
+
+            axios.delete<void>(url)
+                .then((response: AxiosResponse<void>) => {
+                    this.deleteMessage  = "response" + response.status + " " + response.statusText
+                    this.GetAll()
+                })
+                .catch((error: AxiosError) => {
+                    alert(error.message)
+                })
+        }
+
+
 
 
 

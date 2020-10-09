@@ -34,17 +34,44 @@
     <h2 style="font-family: fantasy;">Get By ID</h2>
     <input v-model="toGetById" placeholder="id" type="number">
     <button v-on:click="getById(toGetById)" class="btn btn-primary">Get One</button>
-    <div v-if= "singleBook">
-    {{singleBook.id}} {{singleBook.title}} {{singleBook.author}} {{singleBook.publisher}} {{singleBook.price}}
-  </div>
-  <div v-else>No book</div>
+    <div v-if="singleBook">
+      {{singleBook.id}} {{singleBook.title}} {{singleBook.author}} {{singleBook.publisher}} {{singleBook.price}}
+    </div>
+    <div v-else>No book</div>
+
+    <h2>Add book (Post)</h2>
+    <input v-model="addData.title" placeholder="title" type="text" />
+    <input v-model="addData.author" placeholder="author" type="text" />
+    <input v-model="addData.publisher" placeholder="publisher" type="text" />
+    <input v-model="addData.price" placeholder="price" type="number" />
+    <button v-on:click="addBook" class="btn btn-primary">Add Book</button>
+    <div>{{addMessage}}</div>
+
+    <h2>Update (Put)</h2>
+    <input v-model="updateData.id" placeholder="id" type="number"/>
+    <input v-model="updateData.title" placeholder="title" type="text" />
+    <input v-model="updateData.author" placeholder="author" type="text" />
+    <input v-model="updateData.publisher" placeholder="publisher" type="text" />
+    <input v-model="updateData.price" placeholder="price" type="number" />
+    <button v-on:click="updateBook" class="btn btn-primary">Update</button>
+    <div>{{updateMessage}}</div>
+
+    <h2> Delete Book</h2>
+    <input v-model.number = "deleteId" placeholder="id" type="number"/>
+    <button vi-on:click="deleteBook(deleteId)" class="btn btn-warning">Delete</button>
+    {{deleteMessage}}
+
+
+
+
+
+
 
   </div>
 
   <script src="bundle.js"></script>
 
-  <h2>Add book</h2>
-  <input v-model =""
+
 </body>
 
 </html>
