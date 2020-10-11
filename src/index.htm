@@ -48,7 +48,7 @@
     <div>{{addMessage}}</div>
 
     <h2>Update (Put)</h2>
-    <input v-model="updateData.id" placeholder="id" type="number"/>
+    <input v-model="updateData.id" placeholder="id" type="number" />
     <input v-model="updateData.title" placeholder="title" type="text" />
     <input v-model="updateData.author" placeholder="author" type="text" />
     <input v-model="updateData.publisher" placeholder="publisher" type="text" />
@@ -57,14 +57,9 @@
     <div>{{updateMessage}}</div>
 
     <h2> Delete Book</h2>
-    <input v-model.number = "deleteId" placeholder="id" type="number"/>
+    <input v-model.number="deleteId" placeholder="id" type="number" />
     <button vi-on:click="deleteBook(deleteId)" class="btn btn-warning">Delete</button>
     {{deleteMessage}}
-
-
-
-
-
 
 
   </div>
