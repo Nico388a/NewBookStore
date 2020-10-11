@@ -107,7 +107,7 @@ new Vue({
 
             axios.delete<void>(url)
                 .then((response: AxiosResponse<void>) => {
-                    this.deleteMessage  = "response" + response.status + " " + response.statusText
+                    this.deleteMessage = response.status + " " + response.statusText
                     this.GetAll()
                 })
                 .catch((error: AxiosError) => {
