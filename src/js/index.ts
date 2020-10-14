@@ -40,6 +40,10 @@ new Vue({
 
 
     },
+    created(){
+        this.GetAll()
+    }
+    ,
     methods: {
         GetAll() {
             this.HelpGetAndShow(baseUrl)
@@ -104,13 +108,16 @@ new Vue({
 
         deleteBook(deleteId: number) {
             let url: string = baseUrl + "/" + deleteId
+            console.log(url)
 
             axios.delete<void>(url)
                 .then((response: AxiosResponse<void>) => {
+                    console.log(response.status)
                     this.deleteMessage = response.status + " " + response.statusText
                     this.GetAll()
                 })
                 .catch((error: AxiosError) => {
+                    console.log(error.message)
                     alert(error.message)
                 })
         }

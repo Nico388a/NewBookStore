@@ -17,8 +17,8 @@
 <body>
   <h1>Nicolai's Book Store</h1>
   <div id="app">
-    <input v-model="name" placeholder="Name">
-    <button v-on:click="GetAll" class="btn btn-primary">Get All</button>
+    <!--input v-model="name" placeholder="Name">
+    <button v-on:click="GetAll" class="btn btn-primary">Get All</button-->
 
     <ul v-if="books.length">
       <li v-for="book in books">
@@ -57,7 +57,7 @@
 
     <h2> Delete Book</h2>
     <input v-model.number="deleteId" placeholder="id" type="number" />
-    <button vi-on:click="deleteBook(deleteId)" class="btn btn-warning">Delete</button>
+    <button v-on:click="deleteBook(deleteId)" class="btn btn-warning">Delete</button>
     {{deleteMessage}}
 
 
