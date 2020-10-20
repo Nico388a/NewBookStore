@@ -37,18 +37,19 @@ new Vue({
 
         updateData: { id: 0, title: "", author: "", publisher: "", price: 0 },
         updateMessage: ""
-
-
     },
-    created(){
+
+    created() {
         this.GetAll()
-    }
-    ,
+    },
+
     methods: {
+        //Metode der viser listen af bøger
         GetAll() {
             this.HelpGetAndShow(baseUrl)
         },
 
+        //Metoden der hjælper GetAll med vise listen af bøger
         HelpGetAndShow(url: string) {
             axios.get<IBook[]>(url)
                 .then((response: AxiosResponse<IBook[]>) => {
@@ -62,6 +63,7 @@ new Vue({
 
         },
 
+        //Metode der fremviser 1 bog fra listen, ved at skrive dens id i boksen
         getById(id: number) {
             let url: string = baseUrl + "/" + id
             axios.get<IBook>(url)
@@ -75,8 +77,8 @@ new Vue({
                 )
         },
 
+        //Med addBook() kan man poste sine egne bøger til listen/library. 
         //response message viser status på http fx. om den er 200 ok eller over 400 ikke ok
-
         addBook() {
             axios.post<number>(baseUrl, this.addData)
                 .then((response: AxiosResponse) => {
@@ -90,7 +92,7 @@ new Vue({
                 )
         },
 
-
+        //Med updateBook kan man opdatere en bog, hvis man vil ændre på dens titel, pris, udgiver eller forfatter
         updateBook() {
             let url: string = baseUrl + "/" + this.updateData.id
 
@@ -106,6 +108,7 @@ new Vue({
                 })
         },
 
+        //Med deleteBook kan man slette en bog fra listen, ved at skrive dens id i boksen
         deleteBook(deleteId: number) {
             let url: string = baseUrl + "/" + deleteId
             console.log(url)
@@ -121,13 +124,6 @@ new Vue({
                     alert(error.message)
                 })
         }
-
-
-
-
-
-
-
 
     }
 })

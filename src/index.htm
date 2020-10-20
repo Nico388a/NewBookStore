@@ -15,20 +15,11 @@
 </head>
 
 <body>
-  <h1>Nicolai's Book Store</h1>
+  <h1>Nicolai`s Book Store</h1>
   <div id="app">
+    <!--Dette input gør man kan trykke på en knap for at hente alle bøgerne i listen/library-->
     <!--input v-model="name" placeholder="Name">
     <button v-on:click="GetAll" class="btn btn-primary">Get All</button-->
-
-    <ul v-if="books.length">
-      <li v-for="book in books">
-        {{book.id}} {{book.title}} {{book.author}} {{book.publisher}} {{book.price}}
-
-      </li>
-    </ul>
-    <div v-else>No books</div>
-
-    <br>
 
     <h2 style="font-family: fantasy;">Get By ID</h2>
     <input v-model="toGetById" placeholder="id" type="number">
@@ -38,6 +29,8 @@
     </div>
     <div v-else>No book</div>
 
+    <br>
+
     <h2>Add book (Post)</h2>
     <input v-model="addData.title" placeholder="title" type="text" />
     <input v-model="addData.author" placeholder="author" type="text" />
@@ -45,6 +38,8 @@
     <input v-model="addData.price" placeholder="price" type="number" />
     <button v-on:click="addBook" class="btn btn-primary">Add Book</button>
     <div>{{addMessage}}</div>
+
+    <br>
 
     <h2>Update (Put)</h2>
     <input v-model="updateData.id" placeholder="id" type="number" />
@@ -55,10 +50,46 @@
     <button v-on:click="updateBook" class="btn btn-primary">Update</button>
     <div>{{updateMessage}}</div>
 
+    <br>
+
     <h2> Delete Book</h2>
     <input v-model.number="deleteId" placeholder="id" type="number" />
     <button v-on:click="deleteBook(deleteId)" class="btn btn-warning">Delete</button>
     {{deleteMessage}}
+
+    <!--Denne blev brugt til at vise listen med bøger-->
+    <!--<ul v-if="books.length">
+      <li v-for="book in books">
+        {{book.id}} {{book.title}} {{book.author}} {{book.publisher}} {{book.price}}
+
+      </li>
+    </ul>
+    <div v-else>No books</div>-->
+
+    <br>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Title</th>
+          <th>Author</th>
+          <th>publisher</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="book in books">
+          <td>{{book.id}}</td>
+          <td>{{book.title}}</td>
+          <td>{{book.author}}</td>
+          <td>{{book.publisher}}</td>
+          <td>{{book.price}}</td>
+
+        </tr>
+
+      </tbody>
+    </table>
 
 
   </div>
